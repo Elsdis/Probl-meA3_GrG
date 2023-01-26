@@ -11,10 +11,10 @@ namespace ProblèmeA3_GrG
         //attributs
 
         
-        private DateTime dateentreesociete;
-        private string poste;
-        private double salaire;
-        private List<Salarie> employes;
+        protected DateTime dateentreesociete;
+        protected string poste;
+        protected double salaire;
+        protected List<Salarie> employes;
 
         //Propriétés
 
@@ -82,10 +82,26 @@ namespace ProblèmeA3_GrG
         }
         public static bool operator ==(Salarie s1, Salarie s2)
         {
+            if (s1 is null)
+            {
+                return s2 == null;
+            }
+            if (s2 is null)
+            {
+                return s1 is null;
+            }
             return s1.Nom == s2.Nom && s1.Prenom == s2.Prenom;
         }
         public static bool operator !=(Salarie s1, Salarie s2)
         {
+            if (s1 is null)
+            {
+                return !(s2 is null); 
+            }
+            if (s2 is null)
+            {
+                return !(s1 is null);
+            }
             return s1.Nom != s2.Nom || s1.Prenom != s2.Prenom;
         }
     }

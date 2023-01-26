@@ -26,9 +26,10 @@ namespace ProblèmeA3_GrG
             get { return tarifhoraire; }
         }
 
-        public int CalculTarifhoraire(Chauffeurs chauffeur)
+        public int CalculTarifhoraire()
         {
-            int anciennete = DateTime.Now.Year - chauffeur.Dateentreesociete.Year;
+          
+            int anciennete = DateTime.Now.Year - this.dateentreesociete.Year;
             if (anciennete > 5 && anciennete <10)
             {
                 return 10;

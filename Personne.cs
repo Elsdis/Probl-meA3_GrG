@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ProblèmeA3_GrG
 {
 
-    class Personne
+    public class Personne
     {
 
         //attributs

@@ -15,6 +15,8 @@ namespace ProblèmeA3_GrG
         List<Vehicule> vehicule;
         private Chauffeurs chauffeur;
         private DateTime datedeliv;
+        private bool livré;
+        private bool payé;
         Ville depart;
         Ville arrivee;
         private Dijkstra chemin;
@@ -37,6 +39,18 @@ namespace ProblèmeA3_GrG
             get { return depart; }
 
         }
+        public bool Livré
+        {
+            get { return livré; }
+            set { livré = value; }
+        }
+        public bool Payé
+        {
+            get { return payé; }
+            set { payé = value; }
+        }
+
+
 
         public Ville Arrivee
         {
@@ -65,14 +79,11 @@ namespace ProblèmeA3_GrG
             int[] tempsDistance = chemin.obtenirtempsdistance(arrivee);
             int temps = tempsDistance[0];
             int distance = tempsDistance[1];
-            double tarif = ch.CalculTarifhoraire(ch) + distance * ch.Vehiculeconduit.TarifKilometrique; //manque tarif au kilometrage;   *
+            double tarif = ch.CalculTarifhoraire()*temps + distance * ch.Vehiculeconduit.TarifKilometrique; 
             return tarif;
+            
 
 
-
-        }
-        public void AjouterCommande(Commande c1)
-        {
         }
     }
 }
