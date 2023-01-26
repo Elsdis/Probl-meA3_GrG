@@ -12,7 +12,7 @@ namespace ProblèmeA3_GrG
         private Graph graphVilles;
         private List<Clients> clients;
         private Salarie boss;
-        private List<Commande> commande;
+        private List<Commande> commandes;
         public Salarie Boss
         {
             get { return boss; }
@@ -260,10 +260,41 @@ namespace ProblèmeA3_GrG
             }
             this.boss = ToutLesSalaries[0];
         }
-
-        public void AjouterCommande(Commande c)
+        public Chauffeurs ChauffeurDisponible()
         {
+            return ChauffeurDisponibleHelper(boss);
+        }
+        public Chauffeurs ChauffeurDisponibleHelper(Salarie chef)
+        {
+            bool chauffeurDejaAssigne = commandes.Any(c => c.Chauffeur == chef && !c.Livré);
+            if (chef is Chauffeurs && !chauffeurDejaAssigne)
+                return chef as Chauffeurs;
+            foreach (Salarie e in chef.Employes)
+            {
+                Salarie test = ChauffeurDisponibleHelper(e);
+                if (test != null)
+                    return test as Chauffeurs;
+            }
+            return null;
+        }
 
+        public void AjouterCommande()
+        {
+            //Check si le client existe
+            if(!clients.Contains(c.Client))
+            {
+                clients.Add(c.Client);
+            }
+
+            //Check si le chauffeur est disponible
+            Chauffeurs chauffeur = ChauffeurDisponible();
+            if (chauffeur is null)
+            {
+                Console.WriteLine("Aucun chauffeur disponible");
+                return;
+            }
+            c.Chauffeur = chauffeur;
+            commandes.Add(c);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ProblèmeA3_GrG
         
         protected DateTime dateentreesociete;
         protected string poste;
-        protected double salaire;
+        protected double tarifHoraire;
         protected List<Salarie> employes;
 
         //Propriétés
@@ -32,9 +32,9 @@ namespace ProblèmeA3_GrG
             
         }
 
-        public double Salaire
+        public double TarifHoraire
         {
-            get { return salaire; }
+            get { return tarifHoraire; }
               
         }
         public List<Salarie> Employes
@@ -49,24 +49,24 @@ namespace ProblèmeA3_GrG
         }
         //Constructeur
 
-        public Salarie(List<Salarie> employes, string nom,string prenom, DateTime dt, string adressepostale, string adressemail, string telephone, string numSS, DateTime dtES, string poste, double salaire):base(nom,prenom,dt,adressepostale,adressemail,telephone,numSS)
+        public Salarie(List<Salarie> employes, string nom,string prenom, DateTime dt, string adressepostale, string adressemail, string telephone, string numSS, DateTime dtES, string poste, double tarifHoraire):base(nom,prenom,dt,adressepostale,adressemail,telephone,numSS)
         {
             this.dateentreesociete = dtES;
             this.poste = poste;
-            this.salaire = salaire;
+            this.tarifHoraire = tarifHoraire;
             this.employes = employes;
         }
-        public Salarie( string nom, string prenom, DateTime dt, string adressepostale, string adressemail, string telephone, string numSS, DateTime dtES, string poste, double salaire) : base(nom, prenom, dt, adressepostale, adressemail, telephone, numSS)
+        public Salarie( string nom, string prenom, DateTime dt, string adressepostale, string adressemail, string telephone, string numSS, DateTime dtES, string poste, double tarifHoraire) : base(nom, prenom, dt, adressepostale, adressemail, telephone, numSS)
         {
             this.dateentreesociete = dtES;
             this.poste = poste;
-            this.salaire = salaire;
+            this.tarifHoraire = tarifHoraire;
             this.employes = new List<Salarie>();
         }
 
         public override string ToString()
         {
-            return base.ToString() + $"\nDate entrée société: {dateentreesociete.ToShortDateString()} \nPoste: {poste} \nSalaire: {salaire}";
+            return base.ToString() + $"\nDate entrée société: {dateentreesociete.ToShortDateString()} \nPoste: {poste} \nTarif horaire: {tarifHoraire}";
         }
         public override bool Equals(object obj)
         {
@@ -103,6 +103,28 @@ namespace ProblèmeA3_GrG
                 return !(s1 is null);
             }
             return s1.Nom != s2.Nom || s1.Prenom != s2.Prenom;
+        }
+        public int CalculTarifhoraire()
+        {
+          
+            int anciennete = DateTime.Now.Year - this.dateentreesociete.Year;
+            if (anciennete > 5 && anciennete <10)
+            {
+                return 10;
+            }
+            if(anciennete > 10 && anciennete < 20)
+            {
+                return 12;
+            }
+            if(anciennete>20 && anciennete <30)
+            {
+                return 13;
+            }
+            if (anciennete > 30)
+            {
+                return 15;
+            }
+            return 8;
         }
     }
 }

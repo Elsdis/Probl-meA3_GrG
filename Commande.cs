@@ -12,8 +12,8 @@ namespace ProblèmeA3_GrG
     {
         Clients client;
         private double prix;
-        List<Vehicule> vehicule;
-        private Chauffeurs chauffeur;
+        Vehicule vehicule;
+        private Salarie chauffeur;
         private DateTime datedeliv;
         private bool livré;
         private bool payé;
@@ -25,9 +25,10 @@ namespace ProblèmeA3_GrG
             get { return prix; }
         }
 
-        public Chauffeurs Chauffeur
+        public Salarie Chauffeur
         {
             get { return chauffeur; }
+            set { chauffeur = value; }
         }
         public DateTime Datedeliv
         {
@@ -61,14 +62,13 @@ namespace ProblèmeA3_GrG
         {
             get { return client; }
         }
-        public Commande(Clients client, Ville depart, Ville arrivee, double prix, List<Vehicule> vehicule, Chauffeurs chauffeur, DateTime datedeliv,Graph graphVilles)
+        public Commande(Clients client, Ville depart, Ville arrivee, double prix, Vehicule vehicule, DateTime datedeliv,Graph graphVilles)
         {
             this.client = client;
             this.depart = depart;
             this.arrivee = arrivee;
             this.prix = prix;
             this.vehicule = vehicule;
-            this.chauffeur = chauffeur;
             this.datedeliv = datedeliv;
             this.chemin = new Dijkstra(graphVilles, depart);
             chemin.CheminPlusCourt();
@@ -81,9 +81,6 @@ namespace ProblèmeA3_GrG
             int distance = tempsDistance[1];
             double tarif = ch.CalculTarifhoraire()*temps + distance * ch.Vehiculeconduit.TarifKilometrique; 
             return tarif;
-            
-
-
         }
     }
 }
