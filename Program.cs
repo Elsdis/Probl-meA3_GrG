@@ -132,9 +132,9 @@ namespace ProblèmeA3_GrG
                             bool success = double.TryParse(salaire, out tarifHoraire);
                             Salarie nSalarie = new Salarie(nom, prenom, DateTime.Now, adresse, mail, telephone, nss, DateTime.Now, poste, tarifHoraire);
                             Console.WriteLine("A qui ce salarié est-il afilié?");
-                            Console.WriteLine("Nom?");
+                            Console.WriteLine("Nom? (S'il s'agit du CEO laisser vide)");
                             string bossp = Console.ReadLine();
-                            Console.WriteLine("Prénom?");
+                            Console.WriteLine("Prénom? (S'il s'agit du CEO laisser vide)");
                             string bossn = Console.ReadLine();
                             app.AjouterSalarie(nSalarie, bossp, bossn);
                             Console.WriteLine("Tapez une touche pour retourner:");
