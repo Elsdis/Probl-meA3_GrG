@@ -13,6 +13,7 @@ namespace ProblèmeA3_GrG
         protected int roues;
         protected double fuel;
         protected string immatriculation;
+        protected string nom;
         protected double tarifKilometrique;
 
         //propriétés
@@ -30,6 +31,10 @@ namespace ProblèmeA3_GrG
         public string Immatriculation
         {
                 get { return immatriculation; }
+        }
+        public string Nom
+        {
+            get { return nom; }
         }
 
         public double TarifKilometrique

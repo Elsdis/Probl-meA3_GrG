@@ -65,7 +65,7 @@ namespace ProblèmeA3_GrG
                 }
             }
         }
-        public int[] obtenirtempsdistance(Ville destination)
+        public int[] obtenirtempsdistance (Ville destination)
         {
             return new int[2] { temps[destination.Index], distance[destination.Index] };
         }
