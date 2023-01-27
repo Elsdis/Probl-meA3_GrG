@@ -84,7 +84,7 @@ namespace ProblèmeA3_GrG
         {
             if (s1 is null)
             {
-                return s2 == null;
+                return s2 is null;
             }
             if (s2 is null)
             {

@@ -22,18 +22,26 @@ namespace ProblèmeA3_GrG
 
 
 
-        public Transconnect(Salarie boss, string fichierClient)
+        public Transconnect(Salarie boss, string fichierClient,string fichierCommandes)
         {
             this.boss = boss;
             this.clients = new List<Clients>();
+            this.commandes = new List<Commande>();
             if (File.Exists(fichierClient))
             {
                 LireFichierClient(fichierClient);
             }
+            if(File.Exists(fichierCommandes))
+            {
+                LireFichierCommande(fichierCommandes);
+            }
+            graphVilles = new Graph();
+            graphVilles.LireFichierVille("Distances.csv");
         }
-        public Transconnect(string fichierSalarie, string fichierClient)
+        public Transconnect(string fichierSalarie, string fichierClient, string fichierCommandes)
         {
             this.clients = new List<Clients>();
+            this.commandes = new List<Commande>();
             if (File.Exists(fichierClient))
             {
                 LireFichierClient(fichierClient);
@@ -42,7 +50,21 @@ namespace ProblèmeA3_GrG
             {
                 LireFichierSalarie(fichierSalarie);
             }
+            if(File.Exists(fichierCommandes))
+            {
+                LireFichierCommande(fichierCommandes);
+            }
+            graphVilles = new Graph();
+            graphVilles.LireFichierVille("Distances.csv");
         }
+
+        public void Enregistrer(string fichierSalarie, string fichierClient, string fichierCommandes)
+        {
+            EnregistrerSalaries(fichierSalarie);
+            EnregistrerClients(fichierClient);
+            EnregistrerCommandes(fichierCommandes);
+        }
+
         public int GetTreeLength()
         {
             return GetTreeLengthHelper(boss);
@@ -182,7 +204,7 @@ namespace ProblèmeA3_GrG
             }
 
         }
-        public void EnregistrerClient(string fichier)
+        public void EnregistrerClients(string fichier)
         {
             List<string> lines = new List<string>();
             foreach (Clients client in clients)
@@ -327,7 +349,7 @@ namespace ProblèmeA3_GrG
                 commandes.Add(c);
             }
         }
-        public void EnregistrerCommande(string fichier)
+        public void EnregistrerCommandes(string fichier)
         {
             List<string> lines = new List<string>();
             foreach (Commande c in commandes)

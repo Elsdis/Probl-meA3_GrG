@@ -6,6 +6,7 @@ namespace ProblèmeA3_GrG
     {
         static void AffichageFinal(Transconnect app)
         {
+            Console.Clear();
             Console.WriteLine("Bonjour, bienvenue sur l'application Transconnect");
             Console.WriteLine("Que voulez vous faire?");
             Console.WriteLine("1. Module Client");
@@ -113,7 +114,7 @@ namespace ProblèmeA3_GrG
                             {
                                 case "1":
                                     poste = "Chauffeur";
-                                    
+
                                     break;
                                 case "2":
                                     Console.WriteLine("Entrez le poste du nouveau salarié");
@@ -122,7 +123,7 @@ namespace ProblèmeA3_GrG
                                     break;
                                 case "3":
                                     AffichageFinal(app);
-                                    
+
                                     break;
                             }
                             Console.WriteLine("Entrez le salaire du nouveau salarié");
@@ -213,17 +214,13 @@ namespace ProblèmeA3_GrG
                     break;
             }
         }
-    
-            static void Main(string[] args)
+
+        static void Main(string[] args)
         {
-
-
-            Transconnect app = new Transconnect("test.csv","truc");
+            Transconnect app = new Transconnect("salarie.csv", "clients.csv", "commandes.csv");
+            AffichageFinal(app);
+            app.Enregistrer("salarie.csv", "clients.csv", "commandes.csv");
             
-            app.Boss = new Salarie("Jeff", "Bezos", new DateTime(10, 10, 10), "AAA", "aaa", "aaa", "numss", new DateTime(10, 10, 10), "op", 10.1);
-                AffichageFinal(app);
-                app.EnregistrerSalaries("test.csv");
-                app.EnregistrerClient("truc.csv");
         }
     }
 }

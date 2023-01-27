@@ -1,7 +1,7 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace ProblèmeA3_GrG
 {
@@ -32,7 +32,7 @@ namespace ProblèmeA3_GrG
         }
         public void LireFichierVille(string fichier)
         {
-            string[] lignes = System.IO.File.ReadAllLines(fichier);
+            string[] lignes = File.ReadAllLines(fichier);
             int index = 0;
             foreach (string ligne in lignes)
             {
