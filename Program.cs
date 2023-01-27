@@ -220,6 +220,7 @@ namespace ProblèmeA3_GrG
             Transconnect app = new Transconnect("salarie.csv", "clients.csv", "commandes.csv");
             AffichageFinal(app);
             app.Enregistrer("salarie.csv", "clients.csv", "commandes.csv");
+            Console.WriteLine("Tout a été enregistré");
             
         }
     }
